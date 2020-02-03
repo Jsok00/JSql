@@ -8,14 +8,6 @@ public class Lexer {
     String[] KeyWords = new String[5];
     Vector<Token> tokens= new Vector<>();
 
-    public Lexer(){
-        KeyWords[0]="if";
-        KeyWords[1]="else";
-        KeyWords[2]="insert";
-        KeyWords[3]="select";
-        KeyWords[4]="delete";
-    }
-
     public Lexer(String SourceCode) throws Exception {
         KeyWords[0]="if";
         KeyWords[1]="else";

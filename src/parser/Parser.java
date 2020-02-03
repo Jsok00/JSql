@@ -28,7 +28,7 @@ public class Parser {
     }
     //Tokens后移
     public void read(){
-        if(this.lookAhead.type!="eof"){
+        if(!this.lookAhead.type.equals("eof")){
             this.lookAhead = this.tokens.get(this.index++);
         }
     }
@@ -43,7 +43,7 @@ public class Parser {
         throw new Exception();
     }
     public String matchType(String type) throws Exception {
-        if(this.lookAhead.type==type){
+        if(this.lookAhead.type.equals(type)){
             this.read();
             return type;
         }
@@ -52,13 +52,15 @@ public class Parser {
 
     public Vector<Stmt> parseStmts() throws Exception {
         Vector<Stmt> stmts = new Vector<>();
-        while (this.lookAhead.type != "eof"){
+        while (!this.lookAhead.type.equals("eof")){
             stmts.add(this.parseStmt());
         }
         return stmts;
     }
     public Stmt parseStmt() throws Exception {
-
+//        if (this.lookAhead.type.equals("id")||this.lookAhead.type.equals("number")){
+//            return this.parseExpr();
+//        }
 
         switch (this.lookAhead.value){
             case "auto":{
@@ -71,7 +73,7 @@ public class Parser {
 
     public Stmt parseAssignStmt() throws Exception {
         this.match("auto");
-        if (this.lookAhead.type !="id"){
+        if (!this.lookAhead.type.equals("id")){
             throw new Exception("syntax error");
         }
         Id id = new Id(this.lookAhead.value);
@@ -92,13 +94,16 @@ public class Parser {
 
 
     public Expr parseExpr() throws Exception {
-        Expr term=this.parseTerm();
-        Expr rexpr=this.parseExpr_();
-        if (rexpr==null){
-            return term;
-        }else{
-            return new Expr(term,rexpr);//?
-        }
+//        Expr term=this.parseTerm();
+//        Expr rexpr=this.parseExpr_();
+//        if (rexpr==null){
+//            return term;
+//        }else{
+//            return new Expr(term,rexpr);//?
+//        }
+        ExprParser exprParser = new ExprParser();
+
+        return exprParser.parseExpr(this);
     }
     /*
      *Expr_ -> +Expr || -Expr || e
@@ -149,10 +154,10 @@ public class Parser {
         return null;
     }
     public Expr parseFactor() throws Exception {
-        if(this.lookAhead.type == "number"){
+        if(this.lookAhead.type.equals("number")){
             String value = this.match(this.lookAhead.value);
             return new Expr(new Id(value));
-        }else if(this.lookAhead.type == "String") {
+        }else if(this.lookAhead.type.equals("String")) {
             throw new Exception();
         }else {
             throw new Exception();
@@ -161,7 +166,7 @@ public class Parser {
 
     public static void main(String[] args) throws Exception {
         Parser parser2 = new Parser();
-        parser2.Parse("auto x =  1 + 2 * 3 + ( 5 + 7 );");
+        parser2.Parse("auto x =  ( 1 + 2 ) * 3 ;");
         //System.out.println(parser2.("auto x = ( 1 + 2 ) * 3;"));
     }
 }

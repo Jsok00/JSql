@@ -1,4 +1,7 @@
 package ast;
+
+import lexer.Token;
+
 /*
  *表达式
  */
@@ -14,6 +17,7 @@ public class Expr {
         this.left=left;
         this.right=right;
     }
+    //只有一个因子
     public Expr(Factor factor){
         this.factor=factor;
     }
@@ -25,6 +29,10 @@ public class Expr {
         this.left=left;
         this.op=right.op;
         this.right=right.right;
+    }
+    //只有一个op
+    public Expr(Token token){
+        this.op = new Factor(token.value);
     }
 
     public void gen(Symbols symbols){
