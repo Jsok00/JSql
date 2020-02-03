@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f372dd9c-f88c-4397-82b8-3a8113ba04c0" name="Default Changelist" comment="" />
+    <list default="true" id="f372dd9c-f88c-4397-82b8-3a8113ba04c0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ast/Symbols.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JSql/ast/stmt/AssignStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/ast/stmt/AssignStmt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JSql/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JSql/parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/parser/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JSql/parser/Parser2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/Expr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/Factor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/Factor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/stmt/AssignStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/AssignStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parser/Parser2.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +28,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1X4GmxksNTSdMHyD8ywQTDSlURa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,6 +40,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -29,7 +48,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="Application.Parser2">
+  <component name="RunManager" selected="Application.Parser">
     <configuration name="Lexer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lexer.Lexer" />
       <module name="JSql" />
@@ -56,8 +75,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Parser2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="parser.Parser2" />
+    <configuration name="Parser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="parser.Parser" />
       <module name="JSql" />
       <extension name="coverage">
         <pattern>
@@ -91,10 +110,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Parser2" />
-        <item itemvalue="Application.Lexer" />
         <item itemvalue="Application.Parser" />
         <item itemvalue="Application.main" />
+        <item itemvalue="Application.Parser2" />
+        <item itemvalue="Application.Lexer" />
         <item itemvalue="Application.Test1" />
       </list>
     </recent_temporary>
@@ -127,6 +146,7 @@
       <workItem from="1580556195838" duration="18000" />
       <workItem from="1580622521421" duration="31009000" />
       <workItem from="1580663288308" duration="1188000" />
+      <workItem from="1580712869682" duration="4942000" />
     </task>
     <servers />
   </component>
@@ -144,22 +164,26 @@
     <state x="895" y="154" key="#com.intellij.ide.util.MemberChooser/0.0.1463.874@0.0.1463.874" timestamp="1580312593375" />
     <state x="1028" y="178" key="#com.intellij.ide.util.MemberChooser/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580640707051" />
     <state x="2575" y="-384" key="#com.intellij.ide.util.MemberChooser/1680.-541.1463.891/0.0.1680.1010@1680.-541.1463.891" timestamp="1580401342965" />
-    <state width="1637" height="336" key="GridCell.Tab.0.bottom" timestamp="1580664792606">
+    <state x="514" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1580715292044">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="336" key="GridCell.Tab.0.bottom/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580664792606" />
-    <state width="1637" height="336" key="GridCell.Tab.0.center" timestamp="1580664792606">
+    <state x="514" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580715292044" />
+    <state width="1637" height="148" key="GridCell.Tab.0.bottom" timestamp="1580718983294">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="336" key="GridCell.Tab.0.center/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580664792606" />
-    <state width="1637" height="336" key="GridCell.Tab.0.left" timestamp="1580664792606">
+    <state width="1637" height="148" key="GridCell.Tab.0.bottom/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580718983294" />
+    <state width="1637" height="148" key="GridCell.Tab.0.center" timestamp="1580718983294">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="336" key="GridCell.Tab.0.left/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580664792606" />
-    <state width="1637" height="336" key="GridCell.Tab.0.right" timestamp="1580664792606">
+    <state width="1637" height="148" key="GridCell.Tab.0.center/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580718983294" />
+    <state width="1637" height="148" key="GridCell.Tab.0.left" timestamp="1580718983294">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="336" key="GridCell.Tab.0.right/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580664792606" />
+    <state width="1637" height="148" key="GridCell.Tab.0.left/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580718983294" />
+    <state width="1637" height="148" key="GridCell.Tab.0.right" timestamp="1580718983294">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="148" key="GridCell.Tab.0.right/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580718983294" />
     <state width="1637" height="336" key="GridCell.Tab.1.bottom" timestamp="1580664792606">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -176,15 +200,19 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1637" height="336" key="GridCell.Tab.1.right/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580664792606" />
+    <state x="632" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580715308346">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="632" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580715308346" />
     <state x="101" y="48" key="new project wizard" timestamp="1580556213762">
       <screen x="0" y="0" width="1463" height="874" />
     </state>
     <state x="101" y="48" key="new project wizard/0.0.1463.874@0.0.1463.874" timestamp="1580556213762" />
-    <state x="870" y="213" width="772" height="785" key="search.everywhere.popup" timestamp="1580643234127">
+    <state x="870" y="213" width="772" height="785" key="search.everywhere.popup" timestamp="1580715218960">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="758" y="184" width="672" height="678" key="search.everywhere.popup/0.0.1463.874@0.0.1463.874" timestamp="1580311946457" />
-    <state x="870" y="213" width="772" height="785" key="search.everywhere.popup/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580643234127" />
+    <state x="870" y="213" width="772" height="785" key="search.everywhere.popup/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580715218960" />
     <state x="2438" y="-353" width="672" height="692" key="search.everywhere.popup/1680.-541.1463.891/0.0.1680.1010@1680.-541.1463.891" timestamp="1580401842864" />
   </component>
   <component name="XDebuggerManager">

@@ -3,6 +3,7 @@ package parser;
 import ast.Expr;
 import ast.Factor;
 import ast.Id;
+import ast.Symbols;
 import ast.stmt.AssignStmt;
 import ast.stmt.Stmt;
 import lexer.Lexer;
@@ -36,9 +37,9 @@ public class Parser {
     public String match(String value) throws Exception {
         if(this.lookAhead.value.equals(value)){
             this.read();
+            //System.out.println(value+"  走了match现在是  "+this.lookAhead.value);
             return value;
         }
-        System.out.println(this.lookAhead.value + 123);
         throw new Exception();
     }
     public String matchType(String type) throws Exception {
@@ -58,6 +59,7 @@ public class Parser {
     }
     public Stmt parseStmt() throws Exception {
 
+
         switch (this.lookAhead.value){
             case "auto":{
                 return this.parseAssignStmt();
@@ -76,10 +78,14 @@ public class Parser {
         this.match(this.lookAhead.value);
         this.match("=");
         Expr right=this.parseExpr();
+        new AssignStmt(id,right).gen(new Symbols());
         return new AssignStmt(id,right);
     }
     /*
      *Expr -> Term Expr_
+     *
+     *
+     *
      * Term -> -Expr || (Expr) || Term * Factor || Term / Factor ||Factor
      * Factor -> number || string || id
      */
@@ -91,16 +97,17 @@ public class Parser {
         if (rexpr==null){
             return term;
         }else{
-            return new Expr(rexpr.op,term,rexpr);//?
+            return new Expr(term,rexpr);//?
         }
     }
     /*
      *Expr_ -> +Expr || -Expr || e
      */
     public Expr parseExpr_() throws Exception {
-        if(this.lookAhead.value == "+" || this.lookAhead.value == "-"){
+        if (lookAhead.value != null)
+        if(this.lookAhead.value.equals("+") || this.lookAhead.value.equals("-")){
             String value = this.match(this.lookAhead.value);
-            //return new Expr(value,this.parseExpr());
+            return new Expr(new Factor(value),this.parseExpr());//+ 和+后面东西
         }
         return null;
     }
@@ -113,35 +120,38 @@ public class Parser {
 
     public Expr parseTerm() throws Exception {
         Expr left = null;
-        if(this.lookAhead.value == "-"){
+        if(this.lookAhead.value.equals("-")){
             this.match("-");
             //left = new Expr("-",this.parseExpr());
-        }else if(this.lookAhead.value == "("){
+        }else if(this.lookAhead.value.equals("(")){
             this.match("(");
             Expr expr = this.parseExpr();
             this.match(")");
             left=expr;
         }else{
-            left = this.parseExpr();
+            left = this.parseFactor();
         }
         Expr rterm = this.parseTerm_();
         if(rterm == null){
             return left;
         }
-        return new Expr(rterm.op,left,rterm);
+        return new Expr(rterm.op,left,rterm.right);
 
     }
     public Expr parseTerm_() throws Exception {
-        if(this.lookAhead.value == "*" || this.lookAhead.value == "/"){
+        if (lookAhead.value != null)
+        if(this.lookAhead.value.equals("*") || this.lookAhead.value.equals("/")){
+
             String value = this.match(this.lookAhead.value);
-            //return new Expr(value,this.parseTerm());
+
+            return new Expr(new Factor(value),this.parseTerm());
         }
         return null;
     }
-    public Factor parseFactor() throws Exception {
+    public Expr parseFactor() throws Exception {
         if(this.lookAhead.type == "number"){
             String value = this.match(this.lookAhead.value);
-            return new Id(value);
+            return new Expr(new Id(value));
         }else if(this.lookAhead.type == "String") {
             throw new Exception();
         }else {
@@ -150,8 +160,8 @@ public class Parser {
     }
 
     public static void main(String[] args) throws Exception {
-        Parser parser = new Parser();
-        parser.Parse("auto x = b * c;");
-        System.out.println(parser.tokens);
+        Parser parser2 = new Parser();
+        parser2.Parse("auto x =  1 + 2 * 3 + ( 5 + 7 );");
+        //System.out.println(parser2.("auto x = ( 1 + 2 ) * 3;"));
     }
 }
