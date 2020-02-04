@@ -1,11 +1,12 @@
 package lexer;
 
 
+import java.util.LinkedList;
 import java.util.Vector;
 
 public class Lexer {
-    String[] KeyWords = new String[5];
-    Vector<Token> tokens= new Vector<>();
+    String[] KeyWords = new String[8];
+    LinkedList<Token> tokens= new LinkedList<>();
 
     public Lexer(String SourceCode) throws Exception {
         KeyWords[0]="if";
@@ -13,6 +14,9 @@ public class Lexer {
         KeyWords[2]="insert";
         KeyWords[3]="select";
         KeyWords[4]="delete";
+        KeyWords[5]="select";
+        KeyWords[6]="from";
+        KeyWords[7]="where";
 
         int index=0;
         while (SourceCode.charAt(index)!=';'){
@@ -111,14 +115,29 @@ public class Lexer {
                     tokens.add(token);
                     break;
                 }
-
+                case ',':{
+                    Token token = relSplit(SourceCode,index);
+                    index++;
+                    tokens.add(token);
+                    break;
+                }
+                case '.':{
+                    Token token = relDot(SourceCode,index);
+                    index++;
+                    tokens.add(token);
+                    break;
+                }
+                case ';':{
+                    Token token = relOver(SourceCode,index);
+                    index++;
+                    tokens.add(token);
+                    break;
+                }
                 case ' ':
                 case '\n':{
                     index++;
                     break;
                 }
-
-
             }
         }
 //        tokens.add(new Token("eof",null));
@@ -138,7 +157,7 @@ public class Lexer {
         }
         return false;
     }
-
+    //生成关键字或变量
     public Token literal(String SourceCode,Integer index) throws Exception {
         int state=0;
         String str="";
@@ -281,7 +300,41 @@ public class Lexer {
         }
     }
 
-    public Vector<Token> getTokens() {
+    public Token relSplit(String SourceCode,int index) throws Exception {
+        char c = getNextChar(SourceCode,index++);
+        String str = "";
+        if(c == ','){
+            str += c;
+            return new Token("split",str);
+        }else{
+            throw new Exception();
+        }
+    }
+
+    public Token relDot(String SourceCode,int index) throws Exception {
+        char c = getNextChar(SourceCode,index++);
+        String str = "";
+        if(c == '.'){
+            str += c;
+            return new Token("dot",str);
+        }else{
+            throw new Exception();
+        }
+    }
+
+    public Token relOver(String SourceCode,int index) throws Exception {
+        char c = getNextChar(SourceCode,index++);
+        String str = "";
+        if(c == ';'){
+            str += c;
+            return new Token("over",str);
+        }else{
+            throw new Exception();
+        }
+    }
+
+
+    public LinkedList<Token> getTokens() {
         return tokens;
     }
 

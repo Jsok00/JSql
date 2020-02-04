@@ -3,29 +3,28 @@ package parser;
 import ast.Expr;
 import ast.Factor;
 import ast.Id;
-import ast.Symbols;
 import ast.stmt.AssignStmt;
+import ast.stmt.SelectStmt;
 import ast.stmt.Stmt;
 import lexer.Lexer;
 import lexer.Token;
+import java.util.LinkedList;
 
-import java.util.Vector;
 
 public class Parser {
-    Vector<Token> tokens;
+    LinkedList<Token> tokens;
     Integer index;
     Token lookAhead;
-    public Vector<Stmt> Parse(String SourceCode) throws Exception {
-        Vector<Token> tokens = new Lexer(SourceCode).getTokens();
+    public LinkedList<Stmt> Parse(String SourceCode) throws Exception {
+        LinkedList<Token> tokens = new Lexer(SourceCode).getTokens();
         this.tokens=tokens;
         this.tokens.add(new Token("eof",null));
         this.index=0;
         this.lookAhead=this.tokens.get(this.index++);
-
         return this.parseStmts();
         //return null;
-
     }
+
     //Tokens后移
     public void read(){
         if(!this.lookAhead.type.equals("eof")){
@@ -50,8 +49,8 @@ public class Parser {
         throw new Exception();
     }
 
-    public Vector<Stmt> parseStmts() throws Exception {
-        Vector<Stmt> stmts = new Vector<>();
+    public LinkedList<Stmt> parseStmts() throws Exception {
+        LinkedList<Stmt> stmts = new LinkedList<>();
         while (!this.lookAhead.type.equals("eof")){
             stmts.add(this.parseStmt());
         }
@@ -65,6 +64,9 @@ public class Parser {
         switch (this.lookAhead.value){
             case "auto":{
                 return this.parseAssignStmt();
+            }
+            case "select":{
+                return this.parseSelectStmt();
             }
             default:
                 throw new Exception();
@@ -80,9 +82,46 @@ public class Parser {
         this.match(this.lookAhead.value);
         this.match("=");
         Expr right=this.parseExpr();
-        new AssignStmt(id,right).gen(new Symbols());
         return new AssignStmt(id,right);
     }
+
+    public Stmt parseSelectStmt() throws Exception {
+        this.match("select");
+        if (!this.lookAhead.type.equals("id")){
+            throw new Exception("syntax error");
+        }
+        Expr selectList = new Expr(new Factor(this.lookAhead.value));
+        selectList.add(new Factor(this.lookAhead.value));
+        this.match(this.lookAhead.value);
+        while (this.lookAhead.type.equals("split")){
+            this.matchType("split");
+            selectList.add(new Factor(this.lookAhead.value));
+            this.match(this.lookAhead.value);
+        }
+        //这里抓from
+        if (!this.lookAhead.type.equals("Keyword")){
+            throw new Exception("syntax error");
+        }
+        this.matchType("Keyword");
+        if (!this.lookAhead.type.equals("id")){
+            throw new Exception("syntax error");
+        }
+        Expr tableName = new Expr(new Factor(this.lookAhead.value));
+        tableName.add(new Factor(this.lookAhead.value));
+        this.match(this.lookAhead.value);
+        while (this.lookAhead.type.equals("id")){
+            tableName.add(new Factor(this.lookAhead.value));
+            this.match(this.lookAhead.value);
+        }
+        Expr limitState = null;
+        return new SelectStmt(selectList,tableName,limitState);
+    }
+
+
+
+
+
+
     /*
      *Expr -> Term Expr_
      *
@@ -105,6 +144,13 @@ public class Parser {
 
         return exprParser.parseExpr(this);
     }
+
+
+
+
+
+
+
     /*
      *Expr_ -> +Expr || -Expr || e
      */
@@ -153,6 +199,8 @@ public class Parser {
         }
         return null;
     }
+
+
     public Expr parseFactor() throws Exception {
         if(this.lookAhead.type.equals("number")){
             String value = this.match(this.lookAhead.value);
@@ -166,7 +214,8 @@ public class Parser {
 
     public static void main(String[] args) throws Exception {
         Parser parser2 = new Parser();
-        parser2.Parse("auto x =  ( 1 + 2 ) * 3 ;");
+        LinkedList<Stmt> stmts=parser2.Parse("select A , B , C ,D from C;");
+        stmts.get(0).gen();
         //System.out.println(parser2.("auto x = ( 1 + 2 ) * 3;"));
     }
 }
