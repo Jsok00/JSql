@@ -2,10 +2,7 @@ package parser;
 
 import ast.Expr;
 import ast.Factor;
-import ast.stmt.Stmt;
 import lexer.Token;
-
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Stack;
 import java.util.Vector;
@@ -36,7 +33,7 @@ public class ExprParser {
      *帮助stack一直pop到满意为止
      */
     public void popUntill(Stack<Token> stack1, Vector<Expr> stack2 ){
-        Token token = null;
+        Token token;
         while (!stack1.isEmpty()){
             token = stack1.pop();
             if(prediction(token)){
@@ -51,15 +48,8 @@ public class ExprParser {
         }
     }
 
-    public void callBack(Token token){
-
-    }
     public boolean prediction(Token token){
-        if (token.value.equals("(")) {
-            return true;
-        }else {
-            return false;
-        }
+        return token.value.equals("(");
     }
 
     public Expr parseExpr(Parser parser) throws Exception {
@@ -73,35 +63,32 @@ public class ExprParser {
          * PostOrder 后续
          *
          */
-        Vector<Expr> postOrderOutput = inOrederToPostOrder(this.parser);
+        Vector<Expr> postOrderOutput = inOrederToPostOrder();
         return constructAST(postOrderOutput);
     }
 
     public void print(Vector<Expr> postOrderOutput){
-        for(int i =0 ; i< postOrderOutput.size(); i++) {
-            Expr c = postOrderOutput.get(i);
-            if(c.factor!=null){
+        for (Expr c : postOrderOutput) {
+            if (c.factor != null) {
                 System.out.println(c.factor.value);
-            }else{
+            } else {
                 System.out.println(c.op.value);
             }
-
-
         }
     }
 
     public Expr constructAST(Vector<Expr> postOrderOutput){
-         Expr c = null;
+         Expr c;
         Stack<Expr> exprStack = new Stack<>();
         //print(postOrderOutput);
-        for(int i =0 ; i< postOrderOutput.size(); i++){
-            c=postOrderOutput.get(i);
-            if(c.op != null){
+        for (Expr value : postOrderOutput) {
+            c = value;
+            if (c.op != null) {
                 Expr r = exprStack.pop();
                 Expr l = exprStack.pop();
-                Expr expr = new Expr(new Factor(c.op.value),l,r);
+                Expr expr = new Expr(new Factor(c.op.value), l, r);
                 exprStack.push(expr);
-            }else {
+            } else {
                 exprStack.push(new Expr(c.factor));
 
             }
@@ -110,7 +97,7 @@ public class ExprParser {
         return exprStack.get(0);
     }
 
-    public Vector<Expr> inOrederToPostOrder(Parser parser) throws Exception {
+    public Vector<Expr> inOrederToPostOrder() throws Exception {
         Stack<Token> opStack = new Stack<>();
         Vector<Expr> outPut = new Vector<>();
         while ((!this.parser.lookAhead.type.equals("eof"))&&(!this.parser.lookAhead.value.equals("}"))){
@@ -141,14 +128,12 @@ public class ExprParser {
                 }else{
                     lastOp = null;
                 }
-                if (lastOp == null){
-                    opStack.push(op);
-                }else {
-                    if (priorityTable.get(op.value) <= priorityTable.get(lastOp.value)){
-                        popUntill(opStack,outPut); // 可能有问题
+                if (lastOp != null) {
+                    if (priorityTable.get(op.value) <= priorityTable.get(lastOp.value)) {
+                        popUntill(opStack, outPut); // 可能有问题
                     }
-                    opStack.push(op);
                 }
+                opStack.push(op);
             }else {
                 Factor factor = this.parser.parseFactor().factor;
                 outPut.add(new Expr(factor));

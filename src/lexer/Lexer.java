@@ -1,7 +1,6 @@
 package lexer;
 
 
-import javax.xml.transform.Source;
 import java.util.Vector;
 
 public class Lexer {
@@ -15,8 +14,7 @@ public class Lexer {
         KeyWords[3]="select";
         KeyWords[4]="delete";
 
-        Integer index=0;
-        Integer length=SourceCode.length();
+        int index=0;
         while (SourceCode.charAt(index)!=';'){
             char c = SourceCode.charAt(index);
             switch (c){
@@ -142,7 +140,7 @@ public class Lexer {
     }
 
     public Token literal(String SourceCode,Integer index) throws Exception {
-        Integer state=0;
+        int state=0;
         String str="";
         while (true){
             switch (state){
@@ -175,7 +173,7 @@ public class Lexer {
     }
 
     public Token relop(String SourceCode,Integer index) throws Exception {
-        Integer state=0;
+        int state=0;
         while(true){
             switch (state){
                 case 0:{
@@ -237,22 +235,17 @@ public class Lexer {
         }
     }
     public Token arithmetic(String SourceCode,Integer index){
-        Integer state=0;
+        int state=0;
         while (true){
             switch (state){
                 case 0:
                     char c = getNextChar(SourceCode,index++);
                     switch (c){
                         case '+':
-                            return new Token("op",c+"");
                         case '-':
-                            return new Token("op",c+"");
                         case '*':
-                            return new Token("op",c+"");
                         case '/':
-                            return new Token("op",c+"");
                         case '(':
-                            return new Token("op",c+"");
                         case ')':
                             return new Token("op",c+"");
                     }
@@ -262,7 +255,7 @@ public class Lexer {
     }
 
     public Token relNumber(String SourceCode,Integer index) throws Exception {
-        Integer state=0;
+        int state=0;
         String str="";
         while(true){
             switch (state){

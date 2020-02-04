@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f372dd9c-f88c-4397-82b8-3a8113ba04c0" name="Default Changelist" comment="second commit&#10;parser success">
-      <change afterPath="$PROJECT_DIR$/src/parser/ExprParser.java" afterDir="false" />
+    <list default="true" id="f372dd9c-f88c-4397-82b8-3a8113ba04c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JSql/ast/Expr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/ast/Expr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JSql/ast/Factor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/ast/Factor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JSql/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JSql/parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/parser/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/Expr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JSql/lexer/Lexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/lexer/Lexer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lexer/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lexer/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parser/ExprParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/ExprParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +22,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Jsok &lt;jzlgogo@qq.com&gt;" />
         <option value="Jsok" />
       </list>
     </option>
@@ -114,7 +109,6 @@
       <list>
         <item itemvalue="Application.Parser" />
         <item itemvalue="Application.main" />
-        <item itemvalue="Application.Parser2" />
         <item itemvalue="Application.Lexer" />
         <item itemvalue="Application.Test1" />
       </list>
@@ -148,7 +142,8 @@
       <workItem from="1580556195838" duration="18000" />
       <workItem from="1580622521421" duration="31009000" />
       <workItem from="1580663288308" duration="1188000" />
-      <workItem from="1580712869682" duration="19652000" />
+      <workItem from="1580712869682" duration="20320000" />
+      <workItem from="1580803913743" duration="540000" />
     </task>
     <task id="LOCAL-00001" summary="second commit&#10;parser success">
       <created>1580719451272</created>
@@ -157,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580719451272</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Third commit&#10;ExprParser success">
+      <created>1580743396285</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580743396285</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +167,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="second commit&#10;parser success" />
-    <option name="LAST_COMMIT_MESSAGE" value="second commit&#10;parser success" />
+    <MESSAGE value="Third commit&#10;ExprParser success" />
+    <option name="LAST_COMMIT_MESSAGE" value="Third commit&#10;ExprParser success" />
   </component>
   <component name="WindowStateProjectService">
     <state x="432" y="164" key="#Project_Structure" timestamp="1580298255857">
@@ -182,30 +185,30 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="514" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580715292044" />
-    <state x="440" y="99" key="CommitChangelistDialog2" timestamp="1580725458297">
+    <state x="440" y="99" key="CommitChangelistDialog2" timestamp="1580743395073">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="440" y="99" key="CommitChangelistDialog2/0.0.1680.1010@0.0.1680.1010" timestamp="1580725458297" />
-    <state x="440" y="99" key="CommitChangelistDialog2/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580719449945" />
-    <state width="1637" height="148" key="GridCell.Tab.0.bottom" timestamp="1580743265719">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state x="440" y="99" key="CommitChangelistDialog2/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580743395073" />
+    <state width="1420" height="121" key="GridCell.Tab.0.bottom" timestamp="1580804460595">
+      <screen x="0" y="0" width="1463" height="874" />
     </state>
-    <state width="1420" height="148" key="GridCell.Tab.0.bottom/0.0.1463.874@0.0.1463.874" timestamp="1580723019540" />
+    <state width="1420" height="121" key="GridCell.Tab.0.bottom/0.0.1463.874@0.0.1463.874" timestamp="1580804460595" />
     <state width="1637" height="148" key="GridCell.Tab.0.bottom/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580743265719" />
-    <state width="1637" height="148" key="GridCell.Tab.0.center" timestamp="1580743265719">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1420" height="121" key="GridCell.Tab.0.center" timestamp="1580804460595">
+      <screen x="0" y="0" width="1463" height="874" />
     </state>
-    <state width="1420" height="148" key="GridCell.Tab.0.center/0.0.1463.874@0.0.1463.874" timestamp="1580723019540" />
+    <state width="1420" height="121" key="GridCell.Tab.0.center/0.0.1463.874@0.0.1463.874" timestamp="1580804460595" />
     <state width="1637" height="148" key="GridCell.Tab.0.center/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580743265719" />
-    <state width="1637" height="148" key="GridCell.Tab.0.left" timestamp="1580743265719">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1420" height="121" key="GridCell.Tab.0.left" timestamp="1580804460595">
+      <screen x="0" y="0" width="1463" height="874" />
     </state>
-    <state width="1420" height="148" key="GridCell.Tab.0.left/0.0.1463.874@0.0.1463.874" timestamp="1580723019540" />
+    <state width="1420" height="121" key="GridCell.Tab.0.left/0.0.1463.874@0.0.1463.874" timestamp="1580804460595" />
     <state width="1637" height="148" key="GridCell.Tab.0.left/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580743265719" />
-    <state width="1637" height="148" key="GridCell.Tab.0.right" timestamp="1580743265719">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1420" height="121" key="GridCell.Tab.0.right" timestamp="1580804460595">
+      <screen x="0" y="0" width="1463" height="874" />
     </state>
-    <state width="1420" height="148" key="GridCell.Tab.0.right/0.0.1463.874@0.0.1463.874" timestamp="1580723019540" />
+    <state width="1420" height="121" key="GridCell.Tab.0.right/0.0.1463.874@0.0.1463.874" timestamp="1580804460595" />
     <state width="1637" height="148" key="GridCell.Tab.0.right/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580743265719" />
     <state width="1637" height="336" key="GridCell.Tab.1.bottom" timestamp="1580742554860">
       <screen x="0" y="0" width="1680" height="1010" />
