@@ -1,5 +1,7 @@
 package bplustree;
 
+import java.util.ArrayList;
+
 /**
  * 实现B+树
  *
@@ -9,7 +11,9 @@ package bplustree;
 public class BPlusTree <T ,V extends Comparable<V>>{
     private Integer bTreeOrder;
     private Integer maxNumber;
+    //根节点
     private Node<T,V> root;
+    //叶子节点
     private LeafNode<T,V> left;
 
     public BPlusTree(){
@@ -26,6 +30,11 @@ public class BPlusTree <T ,V extends Comparable<V>>{
     public T find(V key){
         T t=this.root.find(key);
         return t;
+    }
+
+    public Object[] findAll(){
+
+        return this.root.findAll();
     }
 
     public void insert(T value,V key){
@@ -56,6 +65,7 @@ public class BPlusTree <T ,V extends Comparable<V>>{
             this.parent=null;
         }
         abstract T find(V key);
+        abstract Object[]findAll();
         abstract Node<T, V> insert(T value,V key);
         abstract LeafNode<T, V> refreshLeft();
     }
@@ -81,6 +91,20 @@ public class BPlusTree <T ,V extends Comparable<V>>{
             //调用确定子节点的方法返回查找的对象
             return this.childs[i].find(key);
         }
+
+        @Override
+        Object[] findAll() {
+            Object []objects = null;
+            int l = 0;
+            for(int i = 0; i < childs.length ;i++){
+                for(int j = 0; j < childs[i].findAll().length ;j++){
+                    objects[l]=childs[i].findAll()[j];
+                    l++;
+                }
+            }
+            return objects;
+        }
+
 
         @Override
         Node<T, V> insert(T value, V key) {
@@ -166,7 +190,7 @@ public class BPlusTree <T ,V extends Comparable<V>>{
 
     //叶子节点
     private class LeafNode<T,V extends Comparable<V>> extends Node{
-        protected Object values[];
+        public Object values[];
         protected LeafNode left;
         protected LeafNode right;
 
@@ -196,6 +220,12 @@ public class BPlusTree <T ,V extends Comparable<V>>{
             }
             return null;
         }
+
+        @Override
+        Object[] findAll() {
+            return this.values;
+        }
+
 
         @Override
         Node insert(Object value, Comparable key) {

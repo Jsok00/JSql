@@ -2,16 +2,18 @@ package table;
 
 import bplustree.BPlusTree;
 
+import java.util.ArrayList;
+
 public class Table {
-    //字段数量
+    //表所含字段数量
     private Integer number;
     //表名
     private String name;
     //字段存储
-    private Field[] fields;
+    private ArrayList<Field> fields;
     //主键名称
     private String primaryKey;
-    //行索引
+    //行索引 主键在数组中的位置 ???
     private Integer index;
 
     public Integer getNumber() {
@@ -22,7 +24,7 @@ public class Table {
         return name;
     }
 
-    public Field[] getFields() {
+    public ArrayList<Field> getFields() {
         return fields;
     }
 
@@ -34,20 +36,19 @@ public class Table {
         return index;
     }
 
-    public Integer getPrimaryKeyNum(){
-        for(int i=0;i<fields.length;i++){
-            if(fields[i].getName()==primaryKey){
-                return i;
-            }
-        }
-        return -1;
-    }
 
-    public Table(String name, Field[] fields, String primaryKey, Integer index){
+    public Table(String name, ArrayList<Field> fields, String primaryKey, Integer index){
         this.name=name;
         this.fields=fields;
         this.primaryKey=primaryKey;
-        this.number=fields.length;
+        this.number=fields.size();
         this.index=index;
+    }
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "fields=" + fields +
+                '}';
     }
 }
