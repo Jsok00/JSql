@@ -1,5 +1,6 @@
 package test;
 import ast.statement.Statement;
+import jsql.JSql;
 import jsql.JSqlDatabase;
 import parser.Parser;
 
@@ -11,11 +12,7 @@ import java.util.LinkedList;
 
 
 public class Test1 {
-     public static void print(String... s ){
-        System.out.println(s[0]);
-        System.out.println(s[1]);
-        System.out.println(s[2]);
-    }
+
     public static void main(String[] args) throws Exception {
         JSqlDatabase jSqlDatabase = new JSqlDatabase("demoDataBase");
         jSqlDatabase.createTable("user");
@@ -34,25 +31,22 @@ public class Test1 {
         jSqlDatabase.insertRowTable("user");
 
 
-            FileOutputStream fos = new FileOutputStream("C:\\Users\\Jsok\\Desktop\\database.ser");
+            FileOutputStream fos = new FileOutputStream("Database\\database.ser");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(jSqlDatabase);
             oos.close();
             fos.close();
             System.out.println("序列化ok");
 
-        FileInputStream fis = new FileInputStream("C:\\Users\\Jsok\\Desktop\\database.ser");
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        jSqlDatabase = (JSqlDatabase) ois.readObject();
-        ois.close();
-        fis.close();
+        JSql jSql = new JSql();
+        JSqlDatabase jSqlDatabase1 = jSql.getDatabase("database");
 
         Parser parser = new Parser();
         LinkedList<Statement> stmts=parser.Parse("select age from user ;");
         LinkedList<String[]>str= stmts.get(0).gen();
         for(String[] s : str){
             if (s.length == 4){
-                for (Object str2:jSqlDatabase.selectByName(s[3], s[1]))
+                for (Object str2:jSqlDatabase1.selectByName(s[3], s[1]))
                 System.out.println(str2);
             }
         }
