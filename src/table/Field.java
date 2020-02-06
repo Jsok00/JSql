@@ -1,6 +1,8 @@
 package table;
 
-public class Field {
+import java.io.Serializable;
+
+public class Field implements Serializable {
     private String name;
     private String type;
     private int size;

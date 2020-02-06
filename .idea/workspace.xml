@@ -8,29 +8,22 @@
   <component name="ChangeListManager">
     <list default="true" id="f372dd9c-f88c-4397-82b8-3a8113ba04c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JSql/ast/stmt/AssignStmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JSql/ast/stmt/Stmt.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JSql/bplustree/BPlusTree$BPlusNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/bplustree/BPlusTree$BPlusNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JSql/bplustree/BPlusTree$LeafNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/bplustree/BPlusTree$LeafNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JSql/bplustree/BPlusTree$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/bplustree/BPlusTree$Node.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JSql/bplustree/BPlusTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/bplustree/BPlusTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JSql/jsql/JSql.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JSql/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JSql/parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/parser/Parser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JSql/table/Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/table/Field.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JSql/table/RowField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/table/RowField.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JSql/table/RowTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/table/RowTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JSql/table/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/table/Table.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JSql/test/Test1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSql/test/Test1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/AssignStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/statement/AssignStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/InsertStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/statement/InsertStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/SelectStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/statement/SelectStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/statement/Statement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/statement/SelectStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/statement/SelectStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/statement/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/statement/Statement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bplustree/BPlusTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bplustree/BPlusTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jsql/JSql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsql/JSqlDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jsql/JSqlDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsql/JSqlDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/table/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/table/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/table/RowField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/table/RowField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/table/RowTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/table/RowTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/table/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/table/Table.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/Test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Test1.java" afterDir="false" />
@@ -203,7 +196,7 @@
       <workItem from="1580803913743" duration="16796000" />
       <workItem from="1580883115401" duration="1025000" />
       <workItem from="1580907479372" duration="2110000" />
-      <workItem from="1580972720911" duration="14041000" />
+      <workItem from="1580972720911" duration="19598000" />
     </task>
     <task id="LOCAL-00001" summary="second commit&#10;parser success">
       <created>1580719451272</created>
@@ -240,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580836528359</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="7th commit update select and insert module">
+      <created>1580986885862</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1580986885862</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,18 +262,19 @@
     <MESSAGE value="Fourth commit&#10;repair some yellow errors" />
     <MESSAGE value="5th commit&#10;add SelectStmt" />
     <MESSAGE value="6th commit update selectAll and selectByName" />
-    <option name="LAST_COMMIT_MESSAGE" value="6th commit update selectAll and selectByName" />
+    <MESSAGE value="7th commit update select and insert module" />
+    <option name="LAST_COMMIT_MESSAGE" value="7th commit update select and insert module" />
   </component>
   <component name="WindowStateProjectService">
     <state x="432" y="164" key="#Project_Structure" timestamp="1580298255857">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="432" y="164" key="#Project_Structure/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580298255857" />
-    <state x="1028" y="178" key="#com.intellij.ide.util.MemberChooser" timestamp="1580985300130">
+    <state x="1028" y="178" key="#com.intellij.ide.util.MemberChooser" timestamp="1580995480430">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="895" y="154" key="#com.intellij.ide.util.MemberChooser/0.0.1463.874@0.0.1463.874" timestamp="1580312593375" />
-    <state x="1028" y="178" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1010@0.0.1680.1010" timestamp="1580985300130" />
+    <state x="1028" y="178" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1010@0.0.1680.1010" timestamp="1580995480430" />
     <state x="1028" y="178" key="#com.intellij.ide.util.MemberChooser/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580640707051" />
     <state x="2575" y="-384" key="#com.intellij.ide.util.MemberChooser/1680.-541.1463.891/0.0.1680.1010@1680.-541.1463.891" timestamp="1580401342965" />
     <state x="493" y="223" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1580974891857">
@@ -285,11 +286,11 @@
     </state>
     <state x="514" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1580976794059" />
     <state x="514" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580907588522" />
-    <state x="440" y="99" key="CommitChangelistDialog2" timestamp="1580836527290">
+    <state x="440" y="99" key="CommitChangelistDialog2" timestamp="1580986884596">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="383" y="43" key="CommitChangelistDialog2/0.0.1463.874@0.0.1463.874" timestamp="1580804848248" />
-    <state x="440" y="99" key="CommitChangelistDialog2/0.0.1680.1010@0.0.1680.1010" timestamp="1580836527290" />
+    <state x="440" y="99" key="CommitChangelistDialog2/0.0.1680.1010@0.0.1680.1010" timestamp="1580986884596" />
     <state x="440" y="99" key="CommitChangelistDialog2/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580743395073" />
     <state x="92" y="92" width="1496" height="826" key="DiffContextDialog" timestamp="1580836574634">
       <screen x="0" y="0" width="1680" height="1010" />
@@ -299,29 +300,29 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="543" y="194" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1580974521006" />
-    <state width="1637" height="207" key="GridCell.Tab.0.bottom" timestamp="1580986321643">
+    <state width="1637" height="207" key="GridCell.Tab.0.bottom" timestamp="1581000294685">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1420" height="121" key="GridCell.Tab.0.bottom/0.0.1463.874@0.0.1463.874" timestamp="1580804835994" />
-    <state width="1637" height="207" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1580986321643" />
+    <state width="1637" height="207" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1581000294685" />
     <state width="1637" height="207" key="GridCell.Tab.0.bottom/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580909029295" />
-    <state width="1637" height="207" key="GridCell.Tab.0.center" timestamp="1580986321643">
+    <state width="1637" height="207" key="GridCell.Tab.0.center" timestamp="1581000294685">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1420" height="121" key="GridCell.Tab.0.center/0.0.1463.874@0.0.1463.874" timestamp="1580804835994" />
-    <state width="1637" height="207" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1580986321643" />
+    <state width="1637" height="207" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1581000294685" />
     <state width="1637" height="207" key="GridCell.Tab.0.center/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580909029295" />
-    <state width="1637" height="207" key="GridCell.Tab.0.left" timestamp="1580986321643">
+    <state width="1637" height="207" key="GridCell.Tab.0.left" timestamp="1581000294685">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1420" height="121" key="GridCell.Tab.0.left/0.0.1463.874@0.0.1463.874" timestamp="1580804835994" />
-    <state width="1637" height="207" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1580986321643" />
+    <state width="1637" height="207" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1581000294685" />
     <state width="1637" height="207" key="GridCell.Tab.0.left/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580909029295" />
-    <state width="1637" height="207" key="GridCell.Tab.0.right" timestamp="1580986321643">
+    <state width="1637" height="207" key="GridCell.Tab.0.right" timestamp="1581000294685">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1420" height="121" key="GridCell.Tab.0.right/0.0.1463.874@0.0.1463.874" timestamp="1580804835994" />
-    <state width="1637" height="207" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1580986321643" />
+    <state width="1637" height="207" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1581000294685" />
     <state width="1637" height="207" key="GridCell.Tab.0.right/1680.-541.1463.891/0.0.1680.1010@0.0.1680.1010" timestamp="1580909029295" />
     <state width="1637" height="336" key="GridCell.Tab.1.bottom" timestamp="1580985733866">
       <screen x="0" y="0" width="1680" height="1010" />

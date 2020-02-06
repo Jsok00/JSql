@@ -1,12 +1,14 @@
 package test;
-import bplustree.BPlusTree;
+import ast.statement.Statement;
 import jsql.JSqlDatabase;
-import table.Field;
-import table.RowField;
-import table.RowTable;
-import table.Table;
+import parser.Parser;
 
-import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.LinkedList;
+
 
 public class Test1 {
      public static void print(String... s ){
@@ -20,6 +22,7 @@ public class Test1 {
         jSqlDatabase.addTableField("id","int", 11, "user", true);
         jSqlDatabase.addTableField("name","string", 11, "user", false);
         jSqlDatabase.addTableField("age","int", 11, "user", false);
+
         jSqlDatabase.addRowTableField("id", 5, "user");
         jSqlDatabase.addRowTableField("name", "蒋卓伦", "user");
         jSqlDatabase.addRowTableField("age", 21, "user");
@@ -30,10 +33,28 @@ public class Test1 {
         jSqlDatabase.addRowTableField("age", 40, "user");
         jSqlDatabase.insertRowTable("user");
 
-        System.out.println(jSqlDatabase.selectByKey("user",5));
 
+            FileOutputStream fos = new FileOutputStream("C:\\Users\\Jsok\\Desktop\\database.ser");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(jSqlDatabase);
+            oos.close();
+            fos.close();
+            System.out.println("序列化ok");
 
+        FileInputStream fis = new FileInputStream("C:\\Users\\Jsok\\Desktop\\database.ser");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        jSqlDatabase = (JSqlDatabase) ois.readObject();
+        ois.close();
+        fis.close();
 
-
+        Parser parser = new Parser();
+        LinkedList<Statement> stmts=parser.Parse("select age from user ;");
+        LinkedList<String[]>str= stmts.get(0).gen();
+        for(String[] s : str){
+            if (s.length == 4){
+                for (Object str2:jSqlDatabase.selectByName(s[3], s[1]))
+                System.out.println(str2);
+            }
+        }
     }
 }

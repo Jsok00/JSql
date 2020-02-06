@@ -4,10 +4,10 @@ package table;
 
 import bplustree.BPlusTree;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Table {
+public class Table implements Serializable {
 
     //表所含字段数量
     private Integer number;
@@ -45,6 +45,7 @@ public class Table {
     public RowTable getRowTable() {
         return rowTable;
     }
+
 
     public Table(String name){
         this.name = name;
@@ -98,7 +99,6 @@ public class Table {
     }
 
     public Object[] selectAll(){
-        System.out.println("ok");
         return this.rowTableBPlusTree.findAll();
     }
 
@@ -112,24 +112,5 @@ public class Table {
         return "Table{" +
                 "fields=" + fields +
                 '}';
-    }
-
-    public static void main(String[] args) {
-        Table table = new Table("user");
-        table.addField("id","int",11,true);
-        table.addField("name","string",11,false);
-        table.addRowTableField("id",2);
-        table.addRowTableField("name","蒋卓伦");
-        table.insertRowTable();
-
-        table.addRowTableField("id",4);
-        table.addRowTableField("name","周杰伦");
-        table.insertRowTable();
-
-        System.out.println(table.selectByKey(2));
-
-
-
-
     }
 }

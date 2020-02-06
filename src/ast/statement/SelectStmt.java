@@ -2,6 +2,8 @@ package ast.statement;
 
 import ast.Expr;
 
+import java.util.LinkedList;
+
 public class SelectStmt extends Statement {
     public Expr selectList;
     public Expr tableName;
@@ -12,15 +14,16 @@ public class SelectStmt extends Statement {
         this.tableName=tableName;
         this.limitState=limitState;
     }
-    public void gen(){
-        System.out.println(tableName.exprs.size());
+    public LinkedList<String[]> gen(){
+
         if (tableName.exprs.size()==1) {
+            LinkedList<String[]> gen = new LinkedList<>();
             for (Expr value : selectList.exprs) {
-                System.out.println("select "+value.factor.value+" from "+tableName.factor.value);
+                String str= "select "+value.factor.value+" from "+tableName.factor.value;
+                gen.add(str.split(" "));
             }
+            return gen;
         }
-
-
-
+    return null;
     }
 }

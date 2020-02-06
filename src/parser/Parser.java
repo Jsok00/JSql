@@ -23,7 +23,6 @@ public class Parser {
         this.index=0;
         this.lookAhead=this.tokens.get(this.index++);
         return this.parseStmts();
-        //return null;
     }
 
     //Tokens后移

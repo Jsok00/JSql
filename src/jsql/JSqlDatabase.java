@@ -5,12 +5,12 @@ import table.Field;
 import table.RowTable;
 import table.Table;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.HashMap;
 
 
 //这是一个数据库，一张表的数据存放在一棵树里
-public class JSqlDatabase {
+public class JSqlDatabase implements Serializable {
     //存储表的B+树
     public BPlusTree<Table,Integer> bPlusTree = new BPlusTree<>(4);
     //数据库名称
@@ -76,26 +76,20 @@ public class JSqlDatabase {
         return table.selectByKey((Integer) key);
     }
 
-
-
-
-    public HashMap<String, Table> getTables() {
-        return tables;
+    public Object[] selectByName(String tableName, String fieldName){
+        Table table = this.tables.get(tableName);
+        Object[] rowTables = table.selectAll();
+        Field[] fields = new Field[rowTables.length];
+        for (int i =0; i<rowTables.length; i++){
+            if(rowTables[i]!= null) {
+                fields[i] = ((RowTable) rowTables[i]).getFields().get(fieldName);
+            }
+        }
+        return fields;
     }
 
-    /**
-     * 插入行
-     * @param
-     */
-//    public void insert(RowTable rowTable){
-//        bPlusTree.insert(rowTable,(Integer) rowTable.getFields().get(rowTable.getIndex()).getValue());
-//    }
 
-
-
-
-
-    public Object[] selectByName(String name) throws Exception {
+    public Object[] selectByName2(String name) throws Exception {
         int index = 0;
         Object[] tables =  bPlusTree.findAll();
         Field[] fields = new Field[tables.length-1];
@@ -104,6 +98,8 @@ public class JSqlDatabase {
                 index=j;
             }
         }
+
+
         for (int i = 1; i<tables.length; i++){
             if((Table)tables[i] != null)
             fields[i-1]=((Table)tables[i]).getFields().get(index);

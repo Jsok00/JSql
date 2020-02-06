@@ -1,5 +1,6 @@
 package bplustree;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * @param <T> 指定值类型
  * @param <V> 使用泛型，指定索引类型,并且指定必须继承Comparable
  */
-public class BPlusTree <T ,V extends Comparable<V>>{
+public class BPlusTree <T ,V extends Comparable<V>> implements Serializable {
     //索引数
     private Integer bTreeOrder;
     private Integer maxNumber;
@@ -51,7 +52,7 @@ public class BPlusTree <T ,V extends Comparable<V>>{
 
 
     //节点公共父类
-    abstract class Node<T,V extends Comparable<V>>{
+    abstract class Node<T,V extends Comparable<V>> implements Serializable{
         //父节点
         protected Node<T,V> parent;
         //子节点
