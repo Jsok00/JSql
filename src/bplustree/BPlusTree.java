@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * @param <V> 使用泛型，指定索引类型,并且指定必须继承Comparable
  */
 public class BPlusTree <T ,V extends Comparable<V>>{
+    //索引数
     private Integer bTreeOrder;
     private Integer maxNumber;
     //根节点
@@ -23,26 +24,27 @@ public class BPlusTree <T ,V extends Comparable<V>>{
     public BPlusTree(Integer bTreeOrder){
         this.bTreeOrder=bTreeOrder;
         this.maxNumber=bTreeOrder+1;
+        //最开始的根节点是叶子节点
         this.root=new LeafNode<T,V>();
         this.left=null;
     }
 
     public T find(V key){
-        T t=this.root.find(key);
-        return t;
+        return this.root.find(key);
     }
 
     public Object[] findAll(){
-
         return this.root.findAll();
     }
 
     public void insert(T value,V key){
         if(key == null)
             return;
+        //索引非空进行插入操作
         Node<T,V> t=this.root.insert(value,key);
         if (t != null)
             this.root=t;    //?
+        //插入后产生叶子节点
         this.left=(LeafNode<T,V>)this.root.refreshLeft();
     }
 
@@ -50,22 +52,24 @@ public class BPlusTree <T ,V extends Comparable<V>>{
 
     //节点公共父类
     abstract class Node<T,V extends Comparable<V>>{
+        //父节点
         protected Node<T,V> parent;
+        //子节点
         protected Node<T,V>[] childs;
-        //键（叶子节点）数量
+        //键（子节点）数量
         protected Integer number;
         //键
-        protected Object keys[];
+        protected Object[] keys;
 
         public Node(){
             this.keys=new Object[maxNumber];
             this.childs=new Node[maxNumber];
-
             this.number=0;
             this.parent=null;
         }
+
         abstract T find(V key);
-        abstract Object[]findAll();
+        abstract Object[] findAll();
         abstract Node<T, V> insert(T value,V key);
         abstract LeafNode<T, V> refreshLeft();
     }

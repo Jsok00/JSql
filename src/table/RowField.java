@@ -1,8 +1,6 @@
 package table;
 
-public class RowField extends Field {
+public class RowField {
 
-    public RowField(String name, String type, String size, Object value) {
-        super(name, type, size, value);
-    }
+
 }

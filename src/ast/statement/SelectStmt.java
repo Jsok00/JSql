@@ -1,13 +1,13 @@
-package ast.stmt;
+package ast.statement;
 
 import ast.Expr;
 
-public class SelectStmt extends Stmt {
+public class SelectStmt extends Statement {
     public Expr selectList;
     public Expr tableName;
     public Expr limitState;
 
-    public SelectStmt(Expr selectList,Expr tableName,Expr limitState){
+    public SelectStmt(Expr selectList, Expr tableName, Expr limitState){
         this.selectList=selectList;
         this.tableName=tableName;
         this.limitState=limitState;

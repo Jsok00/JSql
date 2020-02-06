@@ -3,9 +3,10 @@ package parser;
 import ast.Expr;
 import ast.Factor;
 import ast.Id;
-import ast.stmt.AssignStmt;
-import ast.stmt.SelectStmt;
-import ast.stmt.Stmt;
+import ast.Symbols;
+import ast.statement.AssignStmt;
+import ast.statement.SelectStmt;
+import ast.statement.Statement;
 import lexer.Lexer;
 import lexer.Token;
 import java.util.LinkedList;
@@ -15,7 +16,7 @@ public class Parser {
     LinkedList<Token> tokens;
     Integer index;
     Token lookAhead;
-    public LinkedList<Stmt> Parse(String SourceCode) throws Exception {
+    public LinkedList<Statement> Parse(String SourceCode) throws Exception {
         LinkedList<Token> tokens = new Lexer(SourceCode).getTokens();
         this.tokens=tokens;
         this.tokens.add(new Token("eof",null));
@@ -49,14 +50,14 @@ public class Parser {
         throw new Exception();
     }
 
-    public LinkedList<Stmt> parseStmts() throws Exception {
-        LinkedList<Stmt> stmts = new LinkedList<>();
+    public LinkedList<Statement> parseStmts() throws Exception {
+        LinkedList<Statement> stmts = new LinkedList<>();
         while (!this.lookAhead.type.equals("eof")){
             stmts.add(this.parseStmt());
         }
         return stmts;
     }
-    public Stmt parseStmt() throws Exception {
+    public Statement parseStmt() throws Exception {
 //        if (this.lookAhead.type.equals("id")||this.lookAhead.type.equals("number")){
 //            return this.parseExpr();
 //        }
@@ -73,7 +74,7 @@ public class Parser {
         }
     }
 
-    public Stmt parseAssignStmt() throws Exception {
+    public Statement parseAssignStmt() throws Exception {
         this.match("auto");
         if (!this.lookAhead.type.equals("id")){
             throw new Exception("syntax error");
@@ -82,10 +83,13 @@ public class Parser {
         this.match(this.lookAhead.value);
         this.match("=");
         Expr right=this.parseExpr();
+
+        new AssignStmt(id,right).gen(new Symbols());
+
         return new AssignStmt(id,right);
     }
 
-    public Stmt parseSelectStmt() throws Exception {
+    public Statement parseSelectStmt() throws Exception {
         this.match("select");
         if (!this.lookAhead.type.equals("id")){
             throw new Exception("syntax error");
@@ -214,7 +218,7 @@ public class Parser {
 
     public static void main(String[] args) throws Exception {
         Parser parser2 = new Parser();
-        LinkedList<Stmt> stmts=parser2.Parse("select A , B , C ,D from C;");
+        LinkedList<Statement> stmts=parser2.Parse("select A, B, C, D from E ;");
         stmts.get(0).gen();
         //System.out.println(parser2.("auto x = ( 1 + 2 ) * 3;"));
     }

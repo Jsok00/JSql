@@ -1,8 +1,8 @@
-package ast.stmt;
+package ast.statement;
 /*
  *具体逻辑
  */
-public class Stmt {
+public class Statement {
     public void gen(){
 
     }

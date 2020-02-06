@@ -3,7 +3,7 @@ package table;
 public class Field {
     private String name;
     private String type;
-    private String size;
+    private int size;
     private Object value;
 
     //字段名称
@@ -15,7 +15,7 @@ public class Field {
         return type;
     }
     //字段大小
-    public String getSize() {
+    public int getSize() {
         return size;
     }
     //字段的值
@@ -23,11 +23,17 @@ public class Field {
         return value;
     }
 
-    public Field(String name, String type, String size,Object value){
+    public Field(String name, String type, int size,Object value){
         this.name=name;
         this.type=type;
         this.size=size;
         this.value=value;
+    }
+
+    public Field(String name, String type, int size){
+        this.name=name;
+        this.type=type;
+        this.size=size;
     }
 
     @Override
