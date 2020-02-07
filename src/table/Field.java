@@ -1,6 +1,7 @@
 package table;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Field implements Serializable {
     private String name;
@@ -40,11 +41,7 @@ public class Field implements Serializable {
 
     @Override
     public String toString() {
-        return "Field{" +
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", size='" + size + '\'' +
-                ", value=" + value +
-                '}';
+
+        return ""+value;
     }
 }

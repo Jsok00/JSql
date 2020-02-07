@@ -51,14 +51,25 @@ public class Table implements Serializable {
         this.name = name;
         this.number = 0;
         fields = new HashMap<String, Field>();
-        this.rowTableBPlusTree = new BPlusTree<>(4);
+        this.rowTableBPlusTree = new BPlusTree<>(80); //80
     }
     public void initRowTable(){
         this.rowTable=new RowTable(this.name);
     }
 
-
-
+    public Object[] removeNullInArray(Object[] array){
+        int index=0;
+        for (Object object: array){
+            if (object != null){
+                index++;
+            }
+        }
+        Object[] newArray = new Object[index];
+        for (int i = 0; i < index; i++){
+            newArray[i] = array[i];
+        }
+        return newArray;
+    }
     //增加字段结构
     public void addField(String name, String type, int size, boolean isPrimaryKey){
         this.fields.put(name, new Field(name, type, size));
@@ -76,7 +87,6 @@ public class Table implements Serializable {
 
     //增加待插入行列表的字段数据
     public void addRowTableField(String fieldName, Object value){
-
         Field field = fields.get(fieldName);
         Field rowField = new Field(field.getName(),field.getType(),field.getSize(),value);
         this.rowTable.getFields().put(fieldName,rowField);
@@ -94,23 +104,29 @@ public class Table implements Serializable {
 
     //根据主键值寻找行
     public Object selectByKey(Integer primaryKey){
-
         return this.rowTableBPlusTree.find(primaryKey);
     }
 
     public Object[] selectAll(){
-        return this.rowTableBPlusTree.findAll();
+        return removeNullInArray(this.rowTableBPlusTree.findAll());
     }
 
     //根据字段名寻找行
-    public Object selectByName(String name){
-        return null;
+    public Object[] selectByName(String fieldName){
+        Object[] rowTables = selectAll();
+        Field[] fields = new Field[rowTables.length];
+        for (int i =0; i<rowTables.length; i++){
+            if(rowTables[i]!= null) {
+                fields[i] = ((RowTable) rowTables[i]).getFields().get(fieldName);
+            }
+        }
+        return fields;
     }
 
     @Override
     public String toString() {
         return "Table{" +
-                "fields=" + fields +
+                "fields=" + fields.get("name").getName() +
                 '}';
     }
 }

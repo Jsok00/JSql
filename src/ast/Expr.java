@@ -1,8 +1,6 @@
 package ast;
 
 import lexer.Token;
-
-
 import java.util.LinkedList;
 
 /*

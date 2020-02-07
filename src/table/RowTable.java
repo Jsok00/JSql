@@ -11,4 +11,11 @@ public class RowTable extends Table{
 
     }
 
+
+    @Override
+    public String toString() {
+        return "RowTable{" +
+                "fields=" + fields +
+                '}';
+    }
 }

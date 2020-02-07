@@ -78,14 +78,8 @@ public class JSqlDatabase implements Serializable {
 
     public Object[] selectByName(String tableName, String fieldName){
         Table table = this.tables.get(tableName);
-        Object[] rowTables = table.selectAll();
-        Field[] fields = new Field[rowTables.length];
-        for (int i =0; i<rowTables.length; i++){
-            if(rowTables[i]!= null) {
-                fields[i] = ((RowTable) rowTables[i]).getFields().get(fieldName);
-            }
-        }
-        return fields;
+
+        return table.selectByName(fieldName);
     }
 
 
