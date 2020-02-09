@@ -43,8 +43,12 @@ public class Test2 {
             Scanner sc = new Scanner(System.in);
             System.out.print("$JSql: ");
             String sql = sc.nextLine();
+            if(sql.equals("exit")){
+                System.out.println("Bye~");
+                break;
+            }
             jSql.ExecuteCode(sql, jSqlDatabase.getName());
-            break;
+
         }
 
 

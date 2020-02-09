@@ -56,17 +56,20 @@ public class Parser {
         }
         return stmts;
     }
+
     public Statement parseStmt() throws Exception {
 //        if (this.lookAhead.type.equals("id")||this.lookAhead.type.equals("number")){
 //            return this.parseExpr();
 //        }
-
         switch (this.lookAhead.value){
             case "auto":{
                 return this.parseAssignStmt();
             }
             case "select":{
                 return this.parseSelectStmt();
+            }
+            case "insert":{
+                return this.parseInsertStmt();
             }
             default:
                 throw new Exception();
@@ -82,9 +85,7 @@ public class Parser {
         this.match(this.lookAhead.value);
         this.match("=");
         Expr right=this.parseExpr();
-
         new AssignStmt(id,right).gen(new Symbols());
-
         return new AssignStmt(id,right);
     }
 
@@ -118,6 +119,48 @@ public class Parser {
         }
         Expr limitState = null;
         return new SelectStmt(selectList,tableName,limitState);
+    }
+
+    //处理插入语句
+    public Statement parseInsertStmt() throws Exception{
+        this.match("insert");
+        this.match("into");
+        if (!this.lookAhead.type.equals("id")){
+            throw new Exception("syntax error");
+        }
+        //抓表名
+        Expr tableName = new Expr(new Factor(this.lookAhead.value));
+        tableName.add(new Factor(this.lookAhead.value));
+        this.match(this.lookAhead.value);
+        this.match("(");
+        //抓字段名
+        Expr fieldName = null;
+        if(this.lookAhead.type.equals("id")){
+            Factor factor = new Factor(this.lookAhead.value);
+            fieldName = new Expr(factor);
+            fieldName.add(factor);
+            this.match(this.lookAhead.value);
+        }else {
+            throw new Exception("syntax error");
+        }
+        while (this.lookAhead.type.equals("id")){
+            fieldName.add(new Factor(this.lookAhead.value));
+            this.match(this.lookAhead.value);
+        }
+        this.match(")");
+        this.match("values");
+        this.match("(");
+        //抓值
+        Expr value = new Expr(new Factor(this.lookAhead.value));
+        value.add(new Factor(this.lookAhead.value));
+        this.match(this.lookAhead.value);
+
+        while (this.lookAhead.type.equals("id")){
+            value.add(new Factor(this.lookAhead.value));
+            this.match(this.lookAhead.value);
+        }
+        this.match(")");
+        return null;
     }
 
 

@@ -1,12 +1,12 @@
 package ast.statement;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /*
  *具体逻辑
  */
 public class Statement {
-    public LinkedList<String[]> gen() {
+    public ArrayList<String[]> gen() {
         return null;
-    }
+    } //待思考
 }

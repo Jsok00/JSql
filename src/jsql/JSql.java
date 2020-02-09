@@ -25,7 +25,7 @@ public class JSql {
     public void ExecuteCode(String sql, String databaseName) throws Exception {
         Parser parser = new Parser();
         LinkedList<Statement> stmts=parser.Parse(sql);
-        LinkedList<String[]>sqls = stmts.get(0).gen();
+        ArrayList<String[]>sqls = stmts.get(0).gen();
         int index = 0;
         JSqlDatabase jSqlDatabase = jSqlDatabaseHashMap.get(databaseName);
         while (index < sqls.size()){
@@ -36,23 +36,9 @@ public class JSql {
                     index++;
                     if (singleSql.length == 4){
                         Object[] objects = jSqlDatabase.selectByName(singleSql[3], singleSql[1]);
-                        int length = ((Field)objects[0]).getName().length();
                         for(Object object: objects){
-                            if(length < object.toString().length()){
-                                length = object.toString().length();
-                            }
+                            System.out.println(object);
                         }
-                        String line = "";
-                        for (int i =0;i < length+2; i++){
-                            line += "-";
-                        }
-                        System.out.println("+"+line+"+");
-                        System.out.println(printBlank(length,((Field)objects[0]).getName().toString().length())+((Field)objects[0]).getName()+" |");
-                        System.out.println("+"+line+"+");
-                        for(Object object: objects){
-                            System.out.println(printBlank(length,object.toString().length())+object+" |");
-                        }
-                        System.out.println("+"+line+"+");
                     }else if(singleSql.length > 4){
                         System.out.println("功能没写全");
                     }
@@ -71,6 +57,27 @@ public class JSql {
             line += " ";
         }
         return line;
+    }
+
+    static public void printSingleField(Object[] objects){
+        int length = ((Field)objects[0]).getName().length();
+        for(Object object: objects){
+            if(length < object.toString().length()){
+                length = object.toString().length();
+            }
+        }
+        String line = "";
+        for (int i =0;i < length+2; i++){
+            line += "-";
+        }
+        System.out.println("+"+line+"+");
+        System.out.println(printBlank(length,((Field)objects[0]).getName().toString().length())+((Field)objects[0]).getName()+" |");
+        System.out.println("+"+line+"+");
+        for(Object object: objects){
+            System.out.println(printBlank(length,object.toString().length())+object+" |");
+        }
+        System.out.println("+"+line+"+");
+
     }
 
     //?

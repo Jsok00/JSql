@@ -5,18 +5,21 @@ import java.util.LinkedList;
 import java.util.Vector;
 
 public class Lexer {
-    String[] KeyWords = new String[8];
+    String[] KeyWords = new String[11];
     LinkedList<Token> tokens= new LinkedList<>();
 
     public Lexer(String SourceCode) throws Exception {
-        KeyWords[0]="if";
-        KeyWords[1]="else";
-        KeyWords[2]="insert";
-        KeyWords[3]="select";
-        KeyWords[4]="delete";
-        KeyWords[5]="select";
-        KeyWords[6]="from";
-        KeyWords[7]="where";
+        KeyWords[0] = "if";
+        KeyWords[1] = "else";
+        KeyWords[2] = "insert";
+        KeyWords[3] = "select";
+        KeyWords[4] = "delete";
+        KeyWords[5] = "select";
+        KeyWords[6] = "from";
+        KeyWords[7] = "where";
+        KeyWords[8] = "insert";
+        KeyWords[9] = "into";
+        KeyWords[10] = "values";
 
         int index=0;
         while (SourceCode.charAt(index)!=';'){
