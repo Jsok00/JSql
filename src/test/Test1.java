@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -69,7 +70,7 @@ public class Test1 {
 
         Parser parser = new Parser();
         LinkedList<Statement> stmts=parser.Parse("select age from user ;");
-        LinkedList<String[]>str= stmts.get(0).gen();
+        ArrayList<String[]> str= stmts.get(0).gen();
         for(String[] s : str){
             if (s.length == 4){
                 for (Object str2:jSqlDatabase.selectByName(s[3], s[1]))

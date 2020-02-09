@@ -5,6 +5,7 @@ import ast.Factor;
 import ast.Id;
 import ast.Symbols;
 import ast.statement.AssignStmt;
+import ast.statement.InsertStmt;
 import ast.statement.SelectStmt;
 import ast.statement.Statement;
 import lexer.Lexer;
@@ -143,7 +144,8 @@ public class Parser {
         }else {
             throw new Exception("syntax error");
         }
-        while (this.lookAhead.type.equals("id")){
+        while (this.lookAhead.type.equals("split")){
+            this.match(",");
             fieldName.add(new Factor(this.lookAhead.value));
             this.match(this.lookAhead.value);
         }
@@ -155,12 +157,13 @@ public class Parser {
         value.add(new Factor(this.lookAhead.value));
         this.match(this.lookAhead.value);
 
-        while (this.lookAhead.type.equals("id")){
+        while (this.lookAhead.type.equals("split")){
+            this.match(",");
             value.add(new Factor(this.lookAhead.value));
             this.match(this.lookAhead.value);
         }
         this.match(")");
-        return null;
+        return new InsertStmt(tableName,fieldName,value);
     }
 
 

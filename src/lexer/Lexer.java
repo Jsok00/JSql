@@ -141,6 +141,16 @@ public class Lexer {
                     index++;
                     break;
                 }
+                default:{
+                    if (String.valueOf(c).getBytes("UTF-8").length > 1){
+                        Token token = literal(SourceCode,index);
+                        index += token.value.length();
+                        tokens.add(token);
+                        break;
+                    }else {
+                        throw new Exception();
+                    }
+                }
             }
         }
 //        tokens.add(new Token("eof",null));
@@ -168,7 +178,7 @@ public class Lexer {
             switch (state){
                 case 0:{
                     char c=getNextChar(SourceCode,index++);
-                    if((c>='A'&&c<='Z')||(c>='a'&&c<='z')){
+                    if((c>='A'&&c<='Z')||(c>='a'&&c<='z')||(String.valueOf(c).getBytes("UTF-8").length > 1)){
                         state=1;
                         str+=c;
                     }else {
@@ -178,7 +188,7 @@ public class Lexer {
                 }
                 case 1:{
                     char c=getNextChar(SourceCode,index++);
-                    if((c>='A'&&c<='Z')||(c>='a'&&c<='z')||(c>='0'&&c<='9')){
+                    if((c>='A'&&c<='Z')||(c>='a'&&c<='z')||(c>='0'&&c<='9')||(String.valueOf(c).getBytes("UTF-8").length > 1)){
                         state=1;
                         str+=c;
                     }else{

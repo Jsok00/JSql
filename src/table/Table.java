@@ -95,8 +95,13 @@ public class Table implements Serializable {
     //插入待插入行列表
     public void insertRowTable(){
         if(this.rowTable.getFields().size() == this.number){
-            this.rowTableBPlusTree.insert(rowTable,(Integer) rowTable.getFields().get(this.primaryKey).getValue());
-            //消除行列表里面的字段数据
+            if (rowTable.getFields().get(this.primaryKey).getValue().getClass().toString().equals("class java.lang.Integer")) {
+                this.rowTableBPlusTree.insert(rowTable, (Integer) rowTable.getFields().get(this.primaryKey).getValue());
+                //消除行列表里面的字段数据
+            }else{
+                this.rowTableBPlusTree.insert(rowTable, Integer.parseInt((String) rowTable.getFields().get(this.primaryKey).getValue()));
+                //消除行列表里面的字段数据
+            }
             this.rowTable = new RowTable(name);
         }
 

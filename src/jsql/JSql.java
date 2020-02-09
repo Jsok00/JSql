@@ -25,6 +25,7 @@ public class JSql {
     public void ExecuteCode(String sql, String databaseName) throws Exception {
         Parser parser = new Parser();
         LinkedList<Statement> stmts=parser.Parse(sql);
+        //多条类三地址语句
         ArrayList<String[]>sqls = stmts.get(0).gen();
         int index = 0;
         JSqlDatabase jSqlDatabase = jSqlDatabaseHashMap.get(databaseName);
@@ -42,6 +43,18 @@ public class JSql {
                     }else if(singleSql.length > 4){
                         System.out.println("功能没写全");
                     }
+                    break;
+                }
+                case "insert":{
+                    String tableName = sqls.get(0)[2];
+                    for(String[] singleSql : sqls){
+                        if(singleSql.length == 6){
+                            jSqlDatabase.addRowTableField(singleSql[3], singleSql[5], singleSql[2]);
+                        }
+                    }
+                    jSqlDatabase.insertRowTable(tableName);
+                    index = sqls.size();
+
                     break;
                 }
                 default:{
@@ -83,7 +96,6 @@ public class JSql {
     //?
     private void readObject(ObjectInputStream inputStream) throws IOException,ClassNotFoundException{
         inputStream.defaultReadObject();
-        System.out.println("ok");
     }
 
     public JSqlDatabase getDatabase(String databaseName) throws Exception {
