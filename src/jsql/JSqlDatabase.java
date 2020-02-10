@@ -30,6 +30,10 @@ public class JSqlDatabase implements Serializable {
         return name;
     }
 
+    public HashMap<String, Table> getTables() {
+        return tables;
+    }
+
     /**
      * 根据名称创建数据库
      * @param name

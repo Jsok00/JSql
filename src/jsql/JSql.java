@@ -57,10 +57,29 @@ public class JSql {
 
                     break;
                 }
+                case "show":{
+                    String[] singleSql = sqls.get(index);
+                    index++;
+                    if (singleSql[1].equals("databases")) {
+                        for (String name : jSqlDatabaseHashMap.keySet()) {
+                            System.out.println(name);
+                        }
+                    }else {
+                        for (String name : jSqlDatabase.getTables().keySet()) {
+                            System.out.println(name);
+                        }
+                    }
+                    break;
+                }
                 default:{
                     throw new Exception("sql错误");
                 }
             }
+        }
+    }
+    public void showDatabases(){
+        for (String name : jSqlDatabaseHashMap.keySet()){
+            System.out.println(name);
         }
     }
 

@@ -4,10 +4,7 @@ import ast.Expr;
 import ast.Factor;
 import ast.Id;
 import ast.Symbols;
-import ast.statement.AssignStmt;
-import ast.statement.InsertStmt;
-import ast.statement.SelectStmt;
-import ast.statement.Statement;
+import ast.statement.*;
 import lexer.Lexer;
 import lexer.Token;
 import java.util.LinkedList;
@@ -72,10 +69,14 @@ public class Parser {
             case "insert":{
                 return this.parseInsertStmt();
             }
+            case "show":{
+                return this.parseShowStmt();
+            }
             default:
                 throw new Exception();
         }
     }
+
 
     public Statement parseAssignStmt() throws Exception {
         this.match("auto");
@@ -164,6 +165,12 @@ public class Parser {
         }
         this.match(")");
         return new InsertStmt(tableName,fieldName,value);
+    }
+    public Statement parseShowStmt() throws Exception {
+        this.match("show");
+        String str = this.lookAhead.value;
+        this.match(str);
+        return new ShowStmt(new Expr(new Factor(str)));
     }
 
 

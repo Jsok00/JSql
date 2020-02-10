@@ -47,7 +47,7 @@ public class Test2 {
                 System.out.println("Bye~");
                 break;
             }
-            jSql.ExecuteCode(sql, jSqlDatabase.getName());
+            jSql.ExecuteCode(sql, jSqlDatabase.getName()); //单独数据库
 
         }
 
